@@ -14,6 +14,7 @@ MOLE_COMMANDS=(
     "completion:Setup shell tab completion"
     "update:Update to latest version"
     "remove:Remove Mole from system"
+    "upgrade:Update package managers"
     "help:Show help"
     "version:Show version"
 )

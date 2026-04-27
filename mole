@@ -293,6 +293,8 @@ show_help() {
     printf "  %s%-28s%s %s\n" "$GREEN" "mo analyze /Volumes" "$NC" "Analyze external drives only"
     printf "  %s%-28s%s %s\n" "$GREEN" "mo update --force" "$NC" "Force reinstall latest stable version"
     printf "  %s%-28s%s %s\n" "$GREEN" "mo update --nightly" "$NC" "Install latest unreleased main branch build"
+    printf "  %s%-28s%s %s\n" "$GREEN" "mo upgrade --dry-run" "$NC" "Preview package updates"
+    printf "  %s%-28s%s %s\n" "$GREEN" "mo upgrade --force" "$NC" "Skip confirmations"
     printf "  %s%-28s%s %s\n" "$GREEN" "mo remove --dry-run" "$NC" "Preview Mole removal"
     echo
     printf "%s%s%s\n" "$BLUE" "OPTIONS" "$NC"
@@ -973,6 +975,9 @@ main() {
                 esac
             done
             remove_mole "$dry_run_remove"
+            ;;
+        "upgrade")
+            exec "$SCRIPT_DIR/bin/upgrade.sh" "${args[@]:1}"
             ;;
         "help" | "--help" | "-h")
             show_help
